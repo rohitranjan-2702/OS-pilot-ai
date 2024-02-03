@@ -94,7 +94,7 @@ model Project{
 model Issue{
   id            String    @id @default(auto()) @map("_id") @db.ObjectId
   name          String
-  openData      String
+  openDate      DateTime @default(now())
   description   String
   URL           String
   projectId     String   @db.ObjectId
