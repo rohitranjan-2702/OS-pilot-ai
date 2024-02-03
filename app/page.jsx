@@ -1,9 +1,15 @@
-import Image from "next/image";
+import React from 'react'
+import Home from '../components/home'
+import Cards from '../components/Cards'
 
-export default function Home() {
+
+const Page = () => {
   return (
     <>
-      <div className="text-white text-4xl text-center">Login</div>
+      <Home />
+
     </>
-  );
+  )
 }
+
+export default Page
