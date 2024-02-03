@@ -1,10 +1,16 @@
 import React from 'react'
-import Home from '@/component/home'
+import Home from '@/components/home'
+import Cards from '@/components/Cards'
+
 
 const Page = () => {
   return (
     <>
-      <Home />
+      {/* <Home /> */}
+      <div className='bg=[#0a0a0a]'>
+
+        <Cards />
+      </div>
     </>
   )
 }
