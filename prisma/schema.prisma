@@ -38,33 +38,33 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+  id             String    @id @default(auto()) @map("_id") @db.ObjectId
   name           String?
-  email          String       @unique
+  email          String    @unique
   emailVerified  DateTime?
   image          String?
-  hashedPassword String
-  created_at    DateTime? @default(now())
-  accounts      Account[]
-  sessions      Session[]
-  chat          Chat[]
+  hashedPassword String?
+  created_at     DateTime? @default(now())
+  accounts       Account[]
+  sessions       Session[]
+  chat           Chat[]
 }
 
-model Chat{
-  chat_id       String    @id @default(auto()) @map("_id") @db.ObjectId
-  createdAt     DateTime @default(now())
-  userId        String   @db.ObjectId
-  user User @relation(fields: [userId], references:[id])
-  message Message[]
+model Chat {
+  chat_id   String    @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt DateTime  @default(now())
+  userId    String    @db.ObjectId
+  user      User      @relation(fields: [userId], references: [id])
+  message   Message[]
 }
 
-model Message{
-  message_id    String    @id @default(auto()) @map("_id") @db.ObjectId
-  text          String
-  author        Role[]
-  createdAt     DateTime @default(now())
-  chatId        String   @db.ObjectId
-  chat          Chat     @relation(fields:[chatId],references:[chat_id])
+model Message {
+  message_id String   @id @default(auto()) @map("_id") @db.ObjectId
+  text       String
+  author     Role[]
+  createdAt  DateTime @default(now())
+  chatId     String   @db.ObjectId
+  chat       Chat     @relation(fields: [chatId], references: [chat_id])
 }
 
 enum Role {
@@ -81,24 +81,24 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
-model Project{
-  pro_id            String    @id @default(auto()) @map("_id") @db.ObjectId
-  proName           String
-  proDesc           String
-  techStack         Json[]
-  proURL            String
-  stars             Int
-  proIssue          Issue[]
-  createdAt         DateTime @default(now())
+model Project {
+  pro_id    String   @id @default(auto()) @map("_id") @db.ObjectId
+  proName   String
+  proDesc   String
+  techStack Json[]
+  proURL    String
+  stars     Int
+  proIssue  Issue[]
+  createdAt DateTime @default(now())
 }
 
-model Issue{
-  id            String    @id @default(auto()) @map("_id") @db.ObjectId
-  name          String
-  openDate      DateTime @default(now())
-  description   String
-  URL           String
-  projectId     String   @db.ObjectId
-  project       Project @relation(fields:[projectId],references: [pro_id])
-  createdAt     DateTime @default(now())
+model Issue {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  openDate    DateTime @default(now())
+  description String
+  URL         String
+  projectId   String   @db.ObjectId
+  project     Project  @relation(fields: [projectId], references: [pro_id])
+  createdAt   DateTime @default(now())
 }

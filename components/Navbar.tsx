@@ -1,5 +1,7 @@
+"use client";
 import { LoginButton } from "./login-button";
 import { Session } from "next-auth";
+import { signOut } from "next-auth/react";
 
 export default function Navbar({ session }: { session: Session | null }) {
   return (
@@ -61,16 +63,21 @@ export default function Navbar({ session }: { session: Session | null }) {
                 <div className="inline-flex items-center gap-2 list-none lg:ml-auto">
                   <a
                     href="/profile"
-                    className="px-2 py-2 text-sm font-medium text-white hover:text-white/50 lg:px-6 md:px-3"
+                    className=" cursor-pointer px-2 py-2 text-sm font-medium text-white hover:text-white/50 lg:px-6 md:px-3"
                   >
                     Profile
                   </a>
-                  <a
-                    href="/api/auth/signout"
-                    className="px-2 py-2 text-sm font-medium text-white hover:text-white/50 lg:px-6 md:px-3"
+                  <p
+                    onClick={() =>
+                      signOut({
+                        redirect: true,
+                        callbackUrl: `/`,
+                      })
+                    }
+                    className="cursor-pointer px-2 py-2 text-sm font-medium text-white hover:text-white/50 lg:px-6 md:px-3"
                   >
                     Sign out
-                  </a>
+                  </p>
                 </div>
               </>
             ) : (
