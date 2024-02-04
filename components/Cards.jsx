@@ -1,8 +1,8 @@
 import React from 'react'
 import { cn } from '@/lib/utils'
 const members = [
-    {
-        company_icon: <svg className="w-8 h-8" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+    {  
+        company_icon: <svg className="w-8 h-8" viewBox="0 0 35 35" fill="none" xmlns="https://avatars.githubusercontent.com/u/13742415?s=48&v=4">
             <g clip-path="url(#clip0_715_1824)">
                 <path d="M34.6588 17.9031C34.6588 16.7135 34.5623 15.5175 34.3565 14.3472H17.85V21.0861H27.3025C26.9103 23.2595 25.6499 25.1822 23.8044 26.4039V30.7765H29.4438C32.7554 27.7286 34.6588 23.2274 34.6588 17.9031Z" fill="#4285F4" />
                 <path d="M17.85 35.0011C22.5698 35.0011 26.5502 33.4514 29.4502 30.7764L23.8109 26.4038C22.2419 27.4712 20.2163 28.0757 17.8564 28.0757C13.2909 28.0757 9.41989 24.9956 8.03095 20.8545H2.21155V25.3621C5.18234 31.2715 11.2332 35.0011 17.85 35.0011Z" fill="#34A853" />
@@ -16,12 +16,12 @@ const members = [
             </defs>
         </svg>
         ,
-        company_name: "Trinea",
-        repo_title: "android-open-project",
-        repo_description: "A categorized collection of Android Open Source Projects, More powerful web version:.",
-        repo_url: "https://github.com/Trinea/android-open-project"
+        company_name: "Mediko",
+        repo_title: "serverless",
+        repo_description: "https://github.com/serverless/components",
+        repo_url: "https://github.com/serverless/components"
     }, {
-        company_icon: <svg className="w-8 h-8" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        company_icon: <svg className="w-8 h-8" viewBox="0 0 48 48" fill="none" xmlns="https://avatars.githubusercontent.com/u/56084650?s=48&v=4">
             <g clip-path="url(#clip0_694_1831)">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M24.0005 1C18.303 1.00296 12.7923 3.02092 8.45374 6.69305C4.11521 10.3652 1.23181 15.452 0.319089 21.044C-0.593628 26.636 0.523853 32.3684 3.47174 37.2164C6.41963 42.0643 11.0057 45.7115 16.4099 47.5059C17.6021 47.7272 18.0512 46.9883 18.0512 46.36C18.0512 45.7317 18.0273 43.91 18.0194 41.9184C11.3428 43.3608 9.93197 39.101 9.93197 39.101C8.84305 36.3349 7.26927 35.6078 7.26927 35.6078C5.09143 34.1299 7.43223 34.1576 7.43223 34.1576C9.84455 34.3275 11.1123 36.6194 11.1123 36.6194C13.2504 40.2667 16.7278 39.2116 18.0949 38.5952C18.3095 37.0501 18.9335 35.999 19.621 35.4023C14.2877 34.8017 8.68408 32.7548 8.68408 23.6108C8.65102 21.2394 9.53605 18.9461 11.156 17.2054C10.9096 16.6047 10.087 14.1785 11.3905 10.8829C11.3905 10.8829 13.4054 10.2427 17.9916 13.3289C21.9253 12.2592 26.0757 12.2592 30.0095 13.3289C34.5917 10.2427 36.6026 10.8829 36.6026 10.8829C37.9101 14.1706 37.0875 16.5968 36.8411 17.2054C38.4662 18.9464 39.353 21.2437 39.317 23.6187C39.317 32.7824 33.7015 34.8017 28.3602 35.3905C29.2186 36.1334 29.9856 37.5836 29.9856 39.8122C29.9856 43.0051 29.9578 45.5736 29.9578 46.36C29.9578 46.9962 30.391 47.7391 31.6071 47.5059C37.0119 45.7113 41.5984 42.0634 44.5462 37.2147C47.4941 32.3659 48.611 26.6326 47.6972 21.0401C46.7835 15.4476 43.8986 10.3607 39.5587 6.68921C35.2187 3.01771 29.7067 1.00108 24.0085 1H24.0005Z" fill="#191717" />
                 <path d="M9.08887 35.264C9.03721 35.3826 8.84645 35.4181 8.69146 35.3351C8.53646 35.2522 8.42122 35.098 8.47686 34.9755C8.5325 34.853 8.71928 34.8214 8.87428 34.9044C9.02927 34.9874 9.14848 35.1455 9.08887 35.264Z" fill="#191717" />
@@ -38,12 +38,12 @@ const members = [
                 </clipPath>
             </defs>
         </svg>,
-        company_name: "refine",
-        repo_title: "Web tools manager",
-        repo_description: "AboutA React Framework for building internal tools, admin panels, dashboards & B2B apps with unmatched flexibility",
-        repo_url: "https://github.com/refinedev/refine"
+        company_name: "Find_Me",
+        repo_title: "Find_Me_Issue",
+        repo_description: "A React.js based web-app to find repositories containing 'good first issues' open source contribution. Any kind of contribution and suggestions are highly appreciated!",
+        repo_url: "https://github.com/version0chiro/Find-Me-Issues"
     }, {
-        company_icon: <svg className="w-8 h-8" viewBox="0 0 43 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        company_icon: <svg className="w-8 h-8" viewBox="0 0 43 48" fill="none" xmlns="https://avatars.githubusercontent.com/u/1335450?s=48&v=4">
             <g clip-path="url(#clip0_690_1894)">
                 <path d="M14.1693 48C18.08 48 21.254 44.4159 21.254 39.9999V31.9999H14.1693C10.2586 31.9999 7.08459 35.5839 7.08459 39.9999C7.08459 44.4159 10.2586 48 14.1693 48Z" fill="#0ACF83" />
                 <path d="M7.08459 23.9999C7.08459 19.5839 10.2586 15.9999 14.1693 15.9999H21.254V31.9998H14.1693C10.2586 32 7.08459 28.4159 7.08459 23.9999Z" fill="#A259FF" />
@@ -58,11 +58,11 @@ const members = [
             </defs>
         </svg>,
         company_name: "Figma",
-        repo_title: "UI/UX Designer",
-        repo_description: "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris",
+        repo_title: "JSHiNT",
+        repo_description: "JSHint is a tool that helps to detect errors and potential problems in your JavaScript code",
         techStack: "Full-time",
         location: "Mauritania",
-        repo_url: "javascript:void(0)",
+        repo_url: "https://github.com/jshint/jshint",
     }
 ]
 
