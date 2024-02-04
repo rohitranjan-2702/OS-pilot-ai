@@ -60,8 +60,6 @@ const members = [
         company_name: "Figma",
         repo_title: "UI/UX Designer",
         repo_description: "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris",
-        techStack: "Full-time",
-        location: "Mauritania",
         repo_url: "javascript:void(0)",
     }
 ]
@@ -71,8 +69,9 @@ const Cards = () => {
     return (
         <>
 
-            <section className='' >
+            <section className='m-5' >
                 <div className=" m-10 p-4 md:px-8 bg-[#262626] rounded">
+                    <h1 className='flex justify-center text-white  font-bold ' style={{ fontSize: '40px', fontWeight: 'bold' }}>ALL REPOSITORY</h1>
                     {/* <div className="max-w-md">
                         <h1 className="text-gray-800 text-2xl font-extrabold sm:text-3xl">Open Positions</h1>
                         <p className="text-gray-600 mt-2">We're currently looking talent software engineers, and designers to help us in our missions and to grow up.</p>
@@ -80,39 +79,42 @@ const Cards = () => {
                     <ul className="mt-12 divide-y space-y-3 ">
                         {
                             members.map((item, idx) => (
-                                <li key={idx} className=" px-4 py-5 duration-150 hover:border-white hover:rounded-xl hover:bg-gray-100">
-                                    <a href={item.path} className="space-y-3">
-                                        <div className="flex items-center gap-x-3">
-                                            <div className="bg-white text-white w-14 h-14 border rounded-full flex items-center justify-center">
-                                                {item.company_icon}
+                                <li key={idx} className="px-5 py-12 duration-150 hover:border-white hover:rounded-xl hover:bg-black">
+                                    <a href={item.path} className="m-4 flex justify-between">
+                                        <div>
+                                            <div className="flex items-center gap-x-3">
+                                                <div className="bg-white p-5 text-white w-14 h-14 border rounded-full flex items-center justify-center">
+                                                    {item.company_icon}
+                                                </div>
+                                                <div>
+                                                    <span className="block p-3 text-lg text-indigo-600 font-medium">{item.company_name}</span>
+                                                    <h3 className="text-base p-4 text-white font-semibold mt-1">{item.repo_title}</h3>
+                                                </div>
                                             </div>
-                                            <div>
-                                                <span className="block text-sm text-indigo-600 font-medium">{item.company_name}</span>
-                                                <h3 className="text-base text-white font-semibold mt-1">{item.repo_title}</h3>
-                                            </div>
-                                        </div>
-                                        <p className="text-white sm:text-sm">
-                                            {item.repo_description}
-                                        </p>
-                                        <div className="text-sm text-white flex items-center gap-6">
-                                            <span className="flex items-center gap-2">
-                                                <svg className="w-5 h-5 text-gray-500" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M6 6V5C6 3.34315 7.34315 2 9 2H11C12.6569 2 14 3.34315 14 5V6H16C17.1046 6 18 6.89543 18 8V11.5708C15.5096 12.4947 12.8149 12.9999 10 12.9999C7.18514 12.9999 4.49037 12.4947 2 11.5707V8C2 6.89543 2.89543 6 4 6H6ZM8 5C8 4.44772 8.44772 4 9 4H11C11.5523 4 12 4.44772 12 5V6H8V5ZM9 10C9 9.44772 9.44772 9 10 9H10.01C10.5623 9 11.01 9.44772 11.01 10C11.01 10.5523 10.5623 11 10.01 11H10C9.44772 11 9 10.5523 9 10Z" fill="#9CA3AF" />
-                                                    <path d="M2 13.6923V16C2 17.1046 2.89543 18 4 18H16C17.1046 18 18 17.1046 18 16V13.6923C15.4872 14.5404 12.7964 14.9999 10 14.9999C7.20363 14.9999 4.51279 14.5404 2 13.6923Z" fill="#9CA3AF" />
-                                                </svg>
-                                                {item.techStack}
-                                            </span>
-                                            <span className="flex items-center gap-2">
-                                                <svg className="w-5 h-5 text-gray-500" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M5.05025 4.05025C7.78392 1.31658 12.2161 1.31658 14.9497 4.05025C17.6834 6.78392 17.6834 11.2161 14.9497 13.9497L10 18.8995L5.05025 13.9497C2.31658 11.2161 2.31658 6.78392 5.05025 4.05025ZM10 11C11.1046 11 12 10.1046 12 9C12 7.89543 11.1046 7 10 7C8.89543 7 8 7.89543 8 9C8 10.1046 8.89543 11 10 11Z" fill="#9CA3AF" />
-                                                </svg>
+                                            <p className="text-white sm:text-sm">
+                                                {item.repo_description}
+                                            </p>
+                                            <div className="text-sm text-white flex items-center gap-6">
+                                                <span className="flex items-center gap-2">
+                                                    <svg className="w-5 h-5 text-gray-500" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M6 6V5C6 3.34315 7.34315 2 9 2H11C12.6569 2 14 3.34315 14 5V6H16C17.1046 6 18 6.89543 18 8V11.5708C15.5096 12.4947 12.8149 12.9999 10 12.9999C7.18514 12.9999 4.49037 12.4947 2 11.5707V8C2 6.89543 2.89543 6 4 6H6ZM8 5C8 4.44772 8.44772 4 9 4H11C11.5523 4 12 4.44772 12 5V6H8V5ZM9 10C9 9.44772 9.44772 9 10 9H10.01C10.5623 9 11.01 9.44772 11.01 10C11.01 10.5523 10.5623 11 10.01 11H10C9.44772 11 9 10.5523 9 10Z" fill="#9CA3AF" />
+                                                        <path d="M2 13.6923V16C2 17.1046 2.89543 18 4 18H16C17.1046 18 18 17.1046 18 16V13.6923C15.4872 14.5404 12.7964 14.9999 10 14.9999C7.20363 14.9999 4.51279 14.5404 2 13.6923Z" fill="#9CA3AF" />
+                                                    </svg>
+                                                    {item.techStack}
+                                                </span>
+                                                <span className="flex items-center gap-2">
+                                                    <svg className="w-5 h-5 text-gray-500" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M5.05025 4.05025C7.78392 1.31658 12.2161 1.31658 14.9497 4.05025C17.6834 6.78392 17.6834 11.2161 14.9497 13.9497L10 18.8995L5.05025 13.9497C2.31658 11.2161 2.31658 6.78392 5.05025 4.05025ZM10 11C11.1046 11 12 10.1046 12 9C12 7.89543 11.1046 7 10 7C8.89543 7 8 7.89543 8 9C8 10.1046 8.89543 11 10 11Z" fill="#9CA3AF" />
+                                                    </svg>
 
-                                                {item.location}
-                                            </span>
+                                                    {item.location}
+                                                </span>
+
+                                            </div>
                                         </div>
                                         <button onClick={item.repo_url}
                                             type="button"
-                                            className="w-96 bg-white  inline-block rounded bg-neutral-800 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-100 shadow-[0_4px_9px_-4px_rgba(51,45,45,0.7)] transition duration-150 ease-in-out hover:bg-neutral-800 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] focus:bg-neutral-800 focus:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] focus:outline-none focus:ring-0 active:bg-neutral-900 active:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] dark:bg-neutral-900 dark:shadow-[0_4px_9px_-4px_#030202] dark:hover:bg-neutral-900 dark:hover:shadow-[0_8px_9px_-4px_rgba(3,2,2,0.3),0_4px_18px_0_rgba(3,2,2,0.2)] dark:focus:bg-neutral-900 dark:focus:shadow-[0_8px_9px_-4px_rgba(3,2,2,0.3),0_4px_18px_0_rgba(3,2,2,0.2)] dark:active:bg-neutral-900 dark:active:shadow-[0_8px_9px_-4px_rgba(3,2,2,0.3),0_4px_18px_0_rgba(3,2,2,0.2)]">
+                                            className=" flex justify-center w-64 h-10 mt-10 bg-white  inline-block rounded bg-neutral-800 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-100 shadow-[0_4px_9px_-4px_rgba(51,45,45,0.7)] transition duration-150 ease-in-out hover:bg-neutral-800 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] focus:bg-neutral-800 focus:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] focus:outline-none focus:ring-0 active:bg-neutral-900 active:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] dark:bg-neutral-900 dark:shadow-[0_4px_9px_-4px_#030202] dark:hover:bg-neutral-900 dark:hover:shadow-[0_8px_9px_-4px_rgba(3,2,2,0.3),0_4px_18px_0_rgba(3,2,2,0.2)] dark:focus:bg-neutral-900 dark:focus:shadow-[0_8px_9px_-4px_rgba(3,2,2,0.3),0_4px_18px_0_rgba(3,2,2,0.2)] dark:active:bg-neutral-900 dark:active:shadow-[0_8px_9px_-4px_rgba(3,2,2,0.3),0_4px_18px_0_rgba(3,2,2,0.2)]">
                                             Contribute Now
                                         </button>
                                     </a>

@@ -3,6 +3,8 @@ import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import prisma from "./prisma";
 import GoogleProvider from "next-auth/providers/google";
 import GitHubProvider from "next-auth/providers/github";
+const dns = require('dns');
+dns.setDefaultResultOrder('ipv4first');
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
@@ -10,69 +12,73 @@ export const authOptions: NextAuthOptions = {
   //   strategy: "jwt",
   // },
   providers: [
-    // GoogleProvider({
-    //   clientId: process.env.GOOGLE_CLIENT_ID as string,
-    //   clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID as string,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
 
-    //   async profile(profile) {
-    //     console.log(profile);
-    //     try {
-    //       const isNewUser = await prisma.user.findUnique({
-    //         where: {
-    //           email: profile?.email,
-    //         },
-    //       });
 
-    //       console.log(isNewUser);
+      //   async profile(profile) {
+      //     console.log(profile);
+      //     try {
+      //       const isNewUser = await prisma.user.findUnique({
+      //         where: {
+      //           email: profile?.email,
+      //         },
+      //       });
 
-    //       if (isNewUser?.email) {
-    //         return isNewUser;
-    //       } else {
-    //         const newSub = await prisma.user.create({
-    //           data: {
-    //             email: profile?.email,
-    //           },
-    //         });
-    //         console.log(newSub);
-    //         return {
-    //           id: profile.id,
-    //           name: profile.displayName,
-    //           email: profile.emails?.[0].value || "",
-    //           image: profile.photos?.[0].value || "",
-    //         };
-    //       }
-    //     } catch (error) {
-    //       console.log(error);
-    //       return {
-    //         err: error,
-    //         id: profile.id,
-    //         name: profile.displayName,
-    //         email: profile.emails?.[0].value || "",
-    //         image: profile.photos?.[0].value || "",
-    //       };
-    //     }
-    //   },
-    //   httpOptions: {
-    //     timeout: 30000,
-    //   }
-    // }),
+      //       console.log(isNewUser);
+
+      //       if (isNewUser?.email) {
+      //         return isNewUser;
+      //       } else {
+      //         const newSub = await prisma.user.create({
+      //           data: {
+      //             email: profile?.email,
+      //           },
+      //         });
+      //         console.log(newSub);
+      //         return {
+      //           id: profile.id,
+      //           name: profile.displayName,
+      //           email: profile.emails?.[0].value || "",
+      //           image: profile.photos?.[0].value || "",
+      //         };
+      //       }
+      //     } catch (error) {
+      //       console.log(error);
+      //       return {
+      //         err: error,
+      //         id: profile.id,
+      //         name: profile.displayName,
+      //         email: profile.emails?.[0].value || "",
+      //         image: profile.photos?.[0].value || "",
+      //       };
+      //     }
+      //   },
+      //   httpOptions: {
+      //     timeout: 30000,
+      //   }
+    }),
     GitHubProvider({
       clientId: process.env.GITHUB_CLIENT_ID as string,
       clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
       httpOptions: {
-        timeout: 20000,
+        timeout: 30000,
       }
     }),
   ],
   callbacks: {
-    async jwt({ token, user }) {
-      // Modify the JWT token if needed
-      if (user) {
-        token.id = user.id;
+    async jwt({ token, account }) {
+      // Persist the OAuth access_token to the token right after signin
+      if (account) {
+        token.accessToken = account.access_token
       }
-      return token;
+      return token
+    }, async session({ session, token, user }) {
+      // Store the user's profile in the session
+      session.user = user;
+      return session;
     },
 
   }
-
 };

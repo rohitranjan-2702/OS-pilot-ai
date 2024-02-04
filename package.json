@@ -27,6 +27,7 @@
     "ai": "^2.2.33",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
+    "dns": "^0.2.2",
     "focus-trap-react": "^10.2.3",
     "framer-motion": "^10.18.0",
     "geist": "^1.2.1",
