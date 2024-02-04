@@ -35,8 +35,9 @@
     "next-auth.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
-, "components/login/login.jsx"  ],
+    ".next/types/**/*.ts",
+    "components/login/login.jsx"
+  ],
   "exclude": [
     "node_modules"
   ]
