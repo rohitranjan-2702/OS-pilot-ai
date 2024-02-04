@@ -2,6 +2,7 @@ import { type Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/lib/auth";
+import { Session } from "next-auth";
 // import { auth } from "@/lib/auth";
 import { getChat } from "@/app/actions";
 import { Chat } from "@/components/chat";
@@ -12,10 +13,17 @@ export interface ChatPageProps {
   };
 }
 
+export interface User {
+  id: string;
+  name: string;
+  email: string;
+  image: string;
+}
+
 export async function generateMetadata({
   params,
 }: ChatPageProps): Promise<Metadata> {
-  const session = await getServerSession(authOptions);
+  const session: Session | null = await getServerSession(authOptions);
 
   if (!session?.user) {
     return {};
