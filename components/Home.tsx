@@ -1,14 +1,11 @@
-"use client";
 import React from "react";
-import { LoginButton } from "./login-button";
-import Navbar from "./Navbar";
-// import { EnvelopeOpenIcon } from "@radix-ui/react-icons"
+import Nav from "./nav";
 
 const Home = () => {
   return (
     <>
       <section className="bg-gradient-to-t from-[#030303] to-[#363636]">
-        <Navbar />
+        <Nav />
         <div className="flex flex-col items-center justify-center">
           <div className="relative items-center w-full px-5 pt-12 mx-auto max-w-7xl lg:pt-36 lg:px-16 md:px-12">
             <div className="max-w-3xl mx-auto text-center">

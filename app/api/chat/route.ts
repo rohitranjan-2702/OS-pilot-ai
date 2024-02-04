@@ -2,7 +2,7 @@ import { kv } from "@vercel/kv";
 import { OpenAIStream, StreamingTextResponse } from "ai";
 import OpenAI from "openai";
 
-// import { auth } from "@/lib/auth";
+import { auth } from "@/lib/auth";
 import { nanoid } from "nanoid";
 
 export const runtime = "edge";
@@ -15,17 +15,13 @@ const userId = "okok1122";
 
 export async function POST(req: Request) {
   const json = await req.json();
-  const { messages, previewToken } = json;
-  // const userId = (await auth())?.user.id;
+  const { messages } = json;
+  const userId = (await auth())?.user.id;
 
-  // if (!userId) {
-  //   return new Response("Unauthorized", {
-  //     status: 401,
-  //   });
-  // }
-
-  if (previewToken) {
-    openai.apiKey = previewToken;
+  if (!userId) {
+    return new Response("Unauthorized", {
+      status: 401,
+    });
   }
 
   const res = await openai.chat.completions.create({

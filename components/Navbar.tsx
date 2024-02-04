@@ -1,7 +1,7 @@
-import React from "react";
 import { LoginButton } from "./login-button";
+import { Session } from "next-auth";
 
-const Navbar = () => {
+export default function Navbar({ session }: { session: Session | null }) {
   return (
     <div className="relative overflow-hidden border-b border-white/5">
       <div className="relative w-full mx-auto max-w-7xl">
@@ -56,14 +56,31 @@ const Navbar = () => {
             >
               Chats
             </a>
-            <div className="inline-flex items-center gap-2 list-none lg:ml-auto">
-              <LoginButton />
-            </div>
+            {session ? (
+              <>
+                <div className="inline-flex items-center gap-2 list-none lg:ml-auto">
+                  <a
+                    href="/profile"
+                    className="px-2 py-2 text-sm font-medium text-white hover:text-white/50 lg:px-6 md:px-3"
+                  >
+                    Profile
+                  </a>
+                  <a
+                    href="/api/auth/signout"
+                    className="px-2 py-2 text-sm font-medium text-white hover:text-white/50 lg:px-6 md:px-3"
+                  >
+                    Sign out
+                  </a>
+                </div>
+              </>
+            ) : (
+              <div className="inline-flex items-center gap-2 list-none lg:ml-auto">
+                <LoginButton />
+              </div>
+            )}
           </nav>
         </div>
       </div>
     </div>
   );
-};
-
-export default Navbar;
+}
