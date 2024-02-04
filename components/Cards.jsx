@@ -1,5 +1,5 @@
-import React from 'react'
-import { cn } from '@/lib/utils'
+import React from "react";
+import { cn } from "@/lib/utils";
 const members = [
     {
         company_icon: <svg className="w-8 h-8" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -128,4 +128,4 @@ const Cards = () => {
     )
 }
 
-export default Cards
+export default Cards;

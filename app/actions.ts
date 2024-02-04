@@ -4,14 +4,14 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { kv } from "@vercel/kv";
 
-// import { auth } from "@/auth";
+import { auth } from "@/lib/auth";
 import { type Chat } from "@/lib/types";
 
-const session = {
-  user: {
-    id: "okok1122",
-  },
-};
+// const session = {
+//   user: {
+//     id: "okok1122",
+//   },
+// };
 
 export async function getChats(userId?: string | null) {
   if (!userId) {
@@ -47,21 +47,21 @@ export async function getChat(id: string, userId: string) {
 }
 
 export async function removeChat({ id, path }: { id: string; path: string }) {
-  //   const session = await auth();
+  const session = await auth();
 
-  //   if (!session) {
-  //     return {
-  //       error: "Unauthorized",
-  //     };
-  //   }
+  if (!session) {
+    return {
+      error: "Unauthorized",
+    };
+  }
 
   const uid = await kv.hget<string>(`chat:${id}`, "userId");
 
-  //   if (uid !== session?.user?.id) {
-  //     return {
-  //       error: "Unauthorized",
-  //     };
-  //   }
+  if (uid !== session?.user?.id) {
+    return {
+      error: "Unauthorized",
+    };
+  }
 
   await kv.del(`chat:${id}`);
   await kv.zrem(`user:chat:${session.user.id}`, `chat:${id}`);
@@ -71,13 +71,13 @@ export async function removeChat({ id, path }: { id: string; path: string }) {
 }
 
 export async function clearChats() {
-  //   const session = await auth();
+  const session = await auth();
 
-  //   if (!session?.user?.id) {
-  //     return {
-  //       error: "Unauthorized",
-  //     };
-  //   }
+  if (!session?.user?.id) {
+    return {
+      error: "Unauthorized",
+    };
+  }
 
   const chats: string[] = await kv.zrange(
     `user:chat:${session.user.id}`,
@@ -111,21 +111,21 @@ export async function getSharedChat(id: string) {
 }
 
 export async function shareChat(id: string) {
-  //   const session = await auth();
+  const session = await auth();
 
-  //   if (!session?.user?.id) {
-  //     return {
-  //       error: "Unauthorized",
-  //     };
-  //   }
+  if (!session?.user?.id) {
+    return {
+      error: "Unauthorized",
+    };
+  }
 
   const chat = await kv.hgetall<Chat>(`chat:${id}`);
 
-  //   if (!chat || chat.userId !== session.user.id) {
-  //     return {
-  //       error: "Something went wrong",
-  //     };
-  //   }
+  if (!chat || chat.userId !== session.user.id) {
+    return {
+      error: "Something went wrong",
+    };
+  }
 
   const payload = {
     ...chat,

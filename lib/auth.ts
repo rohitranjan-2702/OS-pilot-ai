@@ -8,9 +8,9 @@ dns.setDefaultResultOrder('ipv4first');
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
-  // session: {
-  //   strategy: "jwt",
-  // },
+  session: {
+    strategy: "jwt",
+  },
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID as string,
@@ -63,22 +63,23 @@ export const authOptions: NextAuthOptions = {
       clientId: process.env.GITHUB_CLIENT_ID as string,
       clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
       httpOptions: {
-        timeout: 30000,
-      }
+        timeout: 20000,
+      },
     }),
   ],
   callbacks: {
-    async jwt({ token, account }) {
-      // Persist the OAuth access_token to the token right after signin
-      if (account) {
-        token.accessToken = account.access_token
+    async jwt({ token, user }) {
+      console.log(user);
+      // Modify the JWT token if needed
+      if (user) {
+        token.id = user.id;
       }
-      return token
-    }, async session({ session, token, user }) {
-      // Store the user's profile in the session
-      session.user = user;
-      return session;
+      return token;
     },
-
-  }
+  },
 };
+
+export const {
+  // handlers: { GET, POST },
+  auth,
+} = NextAuth(authOptions);
