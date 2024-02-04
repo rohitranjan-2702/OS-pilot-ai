@@ -1,5 +1,5 @@
-import React from 'react'
-import Card from "../../components/Cards"
+import React from "react";
+import Card from "../../components/Cards";
 // const members = [
 //     {
 //         company_icon: <svg className="w-8 h-8" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -66,12 +66,12 @@ import Card from "../../components/Cards"
 //     }
 // ]
 
-const page = () => {
-    return (
-        <>
-            <Card />
-        </>
-    )
-}
+const Page = () => {
+  return (
+    <>
+      <Card />
+    </>
+  );
+};
 
-export default page
+export default Page;
