@@ -3,8 +3,7 @@ import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { prisma } from "./prisma";
 import GoogleProvider from "next-auth/providers/google";
 import GitHubProvider from "next-auth/providers/github";
-const dns = require("dns");
-dns.setDefaultResultOrder("ipv4first");
+
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
@@ -91,3 +90,4 @@ export const authOptions: NextAuthOptions = {
     },
   },
 };
+
