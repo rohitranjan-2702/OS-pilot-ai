@@ -1,6 +1,6 @@
 import { Sidebar } from "@/components/sidebar";
 
-// import { auth } from "@/auth";
+import { auth } from "@/lib/auth";
 import { ChatHistory } from "@/components/chat-history";
 
 const session = {

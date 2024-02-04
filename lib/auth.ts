@@ -6,9 +6,9 @@ import GitHubProvider from "next-auth/providers/github";
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
-  // session: {
-  //   strategy: "jwt",
-  // },
+  session: {
+    strategy: "jwt",
+  },
   providers: [
     // GoogleProvider({
     //   clientId: process.env.GOOGLE_CLIENT_ID as string,
@@ -61,18 +61,22 @@ export const authOptions: NextAuthOptions = {
       clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
       httpOptions: {
         timeout: 20000,
-      }
+      },
     }),
   ],
   callbacks: {
     async jwt({ token, user }) {
+      console.log(user);
       // Modify the JWT token if needed
       if (user) {
         token.id = user.id;
       }
       return token;
     },
-
-  }
-
+  },
 };
+
+export const {
+  // handlers: { GET, POST },
+  auth,
+} = NextAuth(authOptions);

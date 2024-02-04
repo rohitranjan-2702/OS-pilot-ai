@@ -1,7 +1,7 @@
 import { type Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
 
-// import { auth } from "@/auth";s
+import { auth } from "@/lib/auth";
 import { getChat } from "@/app/actions";
 import { Chat } from "@/components/chat";
 
@@ -11,20 +11,14 @@ export interface ChatPageProps {
   };
 }
 
-const session = {
-  user: {
-    id: "okok1122",
-  },
-};
-
 export async function generateMetadata({
   params,
 }: ChatPageProps): Promise<Metadata> {
-  // const session = await auth()
+  const session = await auth();
 
-  // if (!session?.user) {
-  //   return {}
-  // }
+  if (!session?.user) {
+    return {};
+  }
 
   const chat = await getChat(params.id, session.user.id);
   return {
@@ -33,11 +27,11 @@ export async function generateMetadata({
 }
 
 export default async function ChatPage({ params }: ChatPageProps) {
-  // const session = await auth();
+  const session = await auth();
 
-  // if (!session?.user) {
-  //   redirect(`/sign-in?next=/chat/${params.id}`);
-  // }
+  if (!session?.user) {
+    redirect(`/`);
+  }
 
   const chat = await getChat(params.id, session.user.id);
 
@@ -45,9 +39,9 @@ export default async function ChatPage({ params }: ChatPageProps) {
     notFound();
   }
 
-  // if (chat?.userId !== session?.user?.id) {
-  //   notFound();
-  // }
+  if (chat?.userId !== session?.user?.id) {
+    notFound();
+  }
 
   return <Chat id={chat.id} initialMessages={chat.messages} />;
 }
